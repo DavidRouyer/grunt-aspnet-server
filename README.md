@@ -47,8 +47,8 @@ grunt.initConfig({
       //Override default URL
       url: 'http://localhost:3000',
 
-      //Override default host. ASP.NET can be hosted on 4 different hosts : WebListener - Kestrel - CustomHost - Helios
-      host: 'WebListener',
+      //Override default type. DNX have 3 different types : console - kestrel - web
+      type: 'web',
 
       //Specify configuration specified in project.json : debug - release...
       configuration: '',
@@ -89,4 +89,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+- v0.2.0 - Switch from k command to dnx
 - v0.1.0 - Initial release

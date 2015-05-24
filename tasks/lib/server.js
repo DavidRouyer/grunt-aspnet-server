@@ -50,7 +50,7 @@ module.exports = function(grunt, target) {
 
       done = grunt.task.current.async();
 
-      options.cmd = 'k';
+      options.cmd = 'dnx';
 
       var base_dir = process.cwd();
 
@@ -63,27 +63,27 @@ module.exports = function(grunt, target) {
         options.args.unshift(options.command);
       }
 
-      if (options.host && !options.command) {
-        switch(options.host) {
-          case 'CustomHost':
+      if (options.type && !options.command) {
+        switch(options.type) {
+          case 'console':
             options.args.unshift('run', 'server.urls=' + options.url);
             break;
-          case 'WebListener':
-            options.args.unshift('Microsoft.AspNet.Hosting', '--server', 'Microsoft.AspNet.Server.WebListener', '--server.urls', options.url);
+          case 'web':
+            options.args.unshift('web', '--server.urls', options.url);
             break;
-          case 'Kestrel':
-            options.args.unshift('Microsoft.AspNet.Hosting', '--server', 'Kestrel', '--server.urls', options.url);
-            break;
-          case 'Helios':
-            //TODO
+          case 'kestrel':
+            options.args.unshift('kestrel', '--server.urls', options.url);
             break;
         }
       }
+
+      options.args.unshift('.');
 
       // Set configuration mode
       if (options.configuration) {
           options.opts.push('--configuration', options.configuration);
       }
+      console.log(options.args);
 
       var donefunc = (options.delay || options.output) ?  function() {} : finished;
       server = process._servers[target] = grunt.util.spawn({
@@ -96,7 +96,7 @@ module.exports = function(grunt, target) {
       process.chdir(base_dir);
 
       if(server === undefined) {
-        grunt.fail.fatal('k runtime is missing! Installation instructions are available here: https://github.com/aspnet/home', 1);
+        grunt.fail.fatal('dnx runtime is missing! Installation instructions are available here: https://github.com/aspnet/home', 1);
       }
 
       if (options.delay) {

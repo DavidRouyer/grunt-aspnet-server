@@ -24,8 +24,8 @@ module.exports = function(grunt) {
     var options = this.options({
       directory: '',
       url: 'http://localhost:3000',
-      //4 available hosts : WebListener - Kestrel - CustomHost - Helios
-      host: 'WebListener',
+      //3 available types : console - kestrel - web
+      type: 'web',
       //Configuration specified in project.json : debug - release...
       configuration: '',
       //Command speficied in project.json : web - run...
