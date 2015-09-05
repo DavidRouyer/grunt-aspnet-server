@@ -77,8 +77,6 @@ module.exports = function(grunt, target) {
         }
       }
 
-      options.args.unshift('.');
-
       // Set configuration mode
       if (options.configuration) {
           options.opts.push('--configuration', options.configuration);
