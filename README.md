@@ -89,5 +89,6 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+- v0.3.0 - Works with ASP.NET 5 beta7
 - v0.2.0 - Switch from k command to dnx
 - v0.1.0 - Initial release
